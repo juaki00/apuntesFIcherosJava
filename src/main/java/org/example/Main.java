@@ -96,15 +96,18 @@ public class Main {
 //
 
 
-                try {
-            Scanner sc = new Scanner(new File("pom.xml"));
-            while(sc.hasNext()){
-                String caracter = sc.next();
-                if(caracter.)
-            }
+                List<String> todo = null;
+        try(var br = new BufferedReader(new FileReader("pom.xml"))){
+            todo = br.lines().toList();
         } catch (FileNotFoundException e) {
             System.out.println("Error de fichero");
+        } catch (IOException e) {
+            System.out.println("Error de entrada salida");
         }
+        todo.forEach((s)->{
+            //System.out.println(s.replaceAll("a","").replaceAll("e","").replaceAll("i","").replaceAll("o","").replaceAll("u",""));
+            System.out.println(s.replaceAll("[aeiouAEIOU]",""));
+        });
 
 
     }
